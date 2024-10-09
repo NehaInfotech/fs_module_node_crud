@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/createdata" method="get">
+        <input type="hidden" name="edit" value="<%= edit %>">
+        Name: <input type="text" name="name" value="<%= (editdata)?editdata.name : "" %>"><br><br>
+        Gujrati: <input type="text" name="lname" value="<%= (editdata)?editdata.lname : "" %>"><br><br>
+        <input type="submit">
+    </form>
+    <table border="1">
+        <tr>
+            <td>name</td>
+            <td>lname</td>
+            <td>delete</td>
+            <td>updete</td>
+        </tr>
+        <% data.map((item,index)=>{
+            %>
+            <tr>
+                <td>
+                    <%=item.name%>
+                </td>
+                <td>
+                    <%=item.lname%>
+                </td>
+                <td><button><a href="/deletedata?delete=<%=index%>">delete</a></button></td>
+                <td><button><a href="/editdata?edite=<%=index%>">edit</a></button></td>
+            </tr>
+            <% }) %>
+    </table>
+</body>
+</html>
